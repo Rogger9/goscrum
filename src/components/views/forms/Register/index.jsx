@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import Button from 'components/Button'
-import { StyledErrorMessage, StyledRegister } from './style'
+import { StyledForms, StyledErrorMessage } from 'styles/Forms'
 
 const initialValues = {
   email: '',
@@ -23,7 +23,7 @@ const Register = () => {
   })
 
   return (
-    <StyledRegister>
+    <StyledForms>
       <h2>Registro</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor='email'>
@@ -107,7 +107,7 @@ const Register = () => {
         {errors.region && <StyledErrorMessage>{errors.region}</StyledErrorMessage>}
         <Button value='Enviar' type='submit' />
       </form>
-    </StyledRegister>
+    </StyledForms>
   )
 }
 

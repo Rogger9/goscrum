@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledRegister = styled.div`
+export const StyledForms = styled.div`
   width: 100%;
   max-width: 40rem;
   margin: auto;

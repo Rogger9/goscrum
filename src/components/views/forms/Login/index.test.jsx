@@ -11,14 +11,14 @@ jest.mock('react-router-dom', () => ({
 
 describe('Login form', () => {
   it('render', () => {
-    const text = screen.getByLabelText('Usuario')
+    const text = screen.getByLabelText('Email')
     expect(text).toBeInTheDocument()
   })
 
-  it('validate username', async () => {
-    const input = screen.getByLabelText('Usuario')
-    await waitFor(() => fireEvent.change(input, { target: { value: 'nametest1' } }))
-    const msg = await screen.findByText('Ingrese un nombre de usuario válido')
+  it('validate email', async () => {
+    const email = screen.getByLabelText('Email')
+    await waitFor(() => fireEvent.change(email, { target: { value: 'asd' } }))
+    const msg = await screen.findByText('Ingrese un correo electrónico válido')
     await waitFor(() => expect(msg).toBeInTheDocument())
   })
 
