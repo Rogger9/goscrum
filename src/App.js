@@ -1,11 +1,18 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import { LOGIN, REGISTER } from 'routes'
+import { AnimatePresence } from 'framer-motion'
 import Login from 'components/views/forms/Login'
 import Register from 'components/views/forms/Register'
 
-export const App = () => (
-  <Routes>
-    <Route path={LOGIN} element={<Login />} />
-    <Route path={REGISTER} element={<Register />} />
-  </Routes>
-)
+export const App = () => {
+  const location = useLocation()
+
+  return (
+    <AnimatePresence exitBeforeEnter>
+      <Routes location={location} key={location.pathname}>
+        <Route path={LOGIN} element={<Login />} />
+        <Route path={REGISTER} element={<Register />} />
+      </Routes>
+    </AnimatePresence>
+  )
+}

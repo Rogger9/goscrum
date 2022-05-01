@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import Button from 'components/Button'
 import { StyledForms, StyledErrorMessage } from 'styles/Forms'
+import AnimatedPage from 'components/AnimatedPage'
 
 const initialValues = {
   email: '',
@@ -34,36 +35,38 @@ const Login = () => {
   })
 
   return (
-    <StyledForms>
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='email'>
-          Email
-          <input
-            type='email'
-            name='email'
-            id='email'
-            placeholder='correo@correo.com'
-            onChange={handleChange}
-            value={values.email}
-          />
-        </label>
-        {errors.email && <StyledErrorMessage>{errors.email}</StyledErrorMessage>}
-        <label htmlFor='password'>
-          Contraseña
-          <input
-            type='password'
-            name='password'
-            id='password'
-            placeholder='Ingrese su contraseña'
-            onChange={handleChange}
-            value={values.password}
-          />
-        </label>
-        {errors.password && <StyledErrorMessage>{errors.password}</StyledErrorMessage>}
-        <Button value='Enviar' type='submit' isDisabled={!(isValid && dirty)} />
-      </form>
-    </StyledForms>
+    <AnimatedPage>
+      <StyledForms>
+        <h2>Iniciar sesión</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor='email'>
+            Email
+            <input
+              type='email'
+              name='email'
+              id='email'
+              placeholder='correo@correo.com'
+              onChange={handleChange}
+              value={values.email}
+            />
+          </label>
+          {errors.email && <StyledErrorMessage>{errors.email}</StyledErrorMessage>}
+          <label htmlFor='password'>
+            Contraseña
+            <input
+              type='password'
+              name='password'
+              id='password'
+              placeholder='Ingrese su contraseña'
+              onChange={handleChange}
+              value={values.password}
+            />
+          </label>
+          {errors.password && <StyledErrorMessage>{errors.password}</StyledErrorMessage>}
+          <Button value='Enviar' type='submit' isDisabled={!(isValid && dirty)} />
+        </form>
+      </StyledForms>
+    </AnimatedPage>
   )
 }
 

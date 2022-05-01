@@ -28,4 +28,9 @@ export const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
     display: grid;
   }
+
+  .framerMotion {
+    width: 100%;
+    margin: auto;
+  }
 `
