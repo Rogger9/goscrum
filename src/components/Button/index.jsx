@@ -6,7 +6,6 @@ const Button = ({ value = 'Value', type = 'button', isDisabled, handleClick, col
     aria-label={value}
     disabled={isDisabled}
     onClick={handleClick}
-    color={color}
   >
     {value}
   </StyledButton>

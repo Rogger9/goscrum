@@ -1,7 +1,9 @@
 import { Suspense, lazy } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { LOGIN, REGISTER } from 'routes'
+import { HOME, LOGIN, REGISTER } from 'routes'
 import { AnimatePresence } from 'framer-motion'
+import RequireAuth from 'components/RequireAuth'
+import Tasks from 'components/views/Tasks'
 import Login from 'components/views/forms/Login'
 import Register from 'components/views/forms/Register'
 import Loader from 'components/Loader'
@@ -16,6 +18,14 @@ export const App = () => {
       <Routes location={location} key={location.pathname}>
         <Route path={LOGIN} element={<Login />} />
         <Route path={REGISTER} element={<Register />} />
+        <Route
+          path={HOME}
+          element={
+            <RequireAuth>
+              <Tasks />
+            </RequireAuth>
+          }
+        />
         <Route
           path='*'
           element={

@@ -2,14 +2,16 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --white: #FCFCFC;
-    --grey: #EAEAEA;
-    --shadow: #2C2C2C30;
-    --orange: #EE5737;
-    --blue: #3861CF;
-    --green: #37C37B;
-    --yellow: #F3D603;
-    --red: #CA1D1D;
+    --global-bgColor: #FFFFFF;
+    --global-bgSecundary: #FAFAFA;
+    --global-grey: #E5E5E5;
+    --global-shadow: #00000040;
+    --global-orange: #FF452B;
+    --global-blue: #007BFF;
+    --global-green: #1EC876;
+    --global-yellow: #FBDE3F;
+    --global-radius: 8px;
+    --global-borderColor: #C4C4C4;
   }
 
   * {
@@ -18,7 +20,7 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: "Nunito", sans-serif;
-    background: var(--white);
+    background: var(--global-bgColor);
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

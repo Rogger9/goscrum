@@ -14,7 +14,7 @@ export const StyledError404 = styled.div`
     a {
       font-weight: bold;
       text-decoration: none;
-      color: var(--orange);
+      color: var(--global-orange);
     }
   }
 
@@ -23,8 +23,8 @@ export const StyledError404 = styled.div`
     padding: 4rem;
     border-radius: .2rem;
     box-shadow:
-      0 1px 3px var(--shadow),
-      0 1px 2px var(--shadow)
+      0 1px 3px var(--global-shadow),
+      0 1px 2px var(--global-shadow)
     ;
   }
 `

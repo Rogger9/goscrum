@@ -25,11 +25,11 @@ export const StyledForms = styled.div`
     height: 2.2rem;
     border-radius: .4rem;
     outline: none;
-    border: 1px solid var(--shadow);
+    border: 1px solid var(--global-shadow);
     padding: 0 .6rem;
 
     &:focus {
-      box-shadow: 0 0 4px var(--shadow);
+      box-shadow: 0 0 4px var(--global-shadow);
     }
   }
 
@@ -37,25 +37,23 @@ export const StyledForms = styled.div`
     height: 2.2rem;
     border-radius: .4rem;
     outline: none;
-    background: var(--white);
+    background: var(--global-bgColor);
     padding: 0 1rem;
     cursor: pointer;
 
     &:focus {
-      box-shadow: 0 0 4px var(--shadow);
+      box-shadow: 0 0 4px var(--global-shadow);
     }
   }
 
   @media screen and (min-width: 640px) {
     padding: 1rem 0;
     border-radius: .2rem;
-    box-shadow: 0 0 4px var(--shadow) inset;
+    box-shadow: 0 0 4px var(--global-shadow) inset;
   }
 `
 
 export const StyledErrorMessage = styled.span`
-  color: var(--red);
+  color: var(--global-orange);
   padding: 0 1rem;
-  text-align: center;
-  font-weight: bold;
 `
