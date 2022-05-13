@@ -5,7 +5,7 @@ beforeEach(() => render(<Register />))
 
 describe('Register form', () => {
   it('render', () => {
-    const text = screen.getByLabelText('Usuario')
+    const text = screen.getByLabelText('Nombre de usuario')
     expect(text).toBeInTheDocument()
   })
 })

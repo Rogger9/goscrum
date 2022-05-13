@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    window.localStorage.removeItem('logged')
+    window.localStorage.removeItem('token')
     navigate(LOGIN, { replace: true })
   }
 

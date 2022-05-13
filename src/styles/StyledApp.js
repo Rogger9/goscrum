@@ -8,3 +8,9 @@ export const StyledButtonClose = styled.button`
   cursor: pointer;
   font-weight: bold;
 `
+
+export const StyledPage = styled.div`
+  margin: auto;
+  display: grid;
+  place-items: center;
+`

@@ -11,7 +11,7 @@ jest.mock('react-router-dom', () => ({
 
 describe('Login form', () => {
   it('render', () => {
-    const text = screen.getByLabelText('Email')
+    const text = screen.getByLabelText('Contraseña')
     expect(text).toBeInTheDocument()
   })
 

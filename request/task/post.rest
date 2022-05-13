@@ -1,0 +1,12 @@
+POST https://goscrum-api.alkemy.org/task
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvcnJlb0ByZWdpc3Rlci5jb20iLCJyb2xlIjoiVGVhbSBMZWFkZXIiLCJ1c2VyTmFtZSI6InVzZXJSZWciLCJ0ZWFtSWQiOiIzNjczOWVhNC1lYjViLTQ2ODgtYmM3ZS0xNTZiZGE3NWMwZjYiLCJ1c2VySWQiOiI2MjdkNDhiMzYxOGVjYjFmNDMxODVjMzIiLCJpYXQiOjE2NTI0MjEyMDcsImV4cCI6MTY1MjUwNzYwN30.p4BtN_frKopt72WUUB-PWLEsCAuFONI1Mz26wK0bCvc
+
+{
+  "task": {
+    "title": "title1",
+    "status": "NEW",
+    "importance": "HIGH",
+    "description": "Desc1"
+  }
+}
