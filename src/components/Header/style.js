@@ -8,3 +8,8 @@ export const StyledHeader = styled.header`
   padding: 0 1rem;
   box-shadow: 0px 4px 4px var(--global-shadow);
 `
+
+export const StyledWrapperRight = styled.section`
+  display: flex;
+  gap: 10px;
+`

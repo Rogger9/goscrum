@@ -20,45 +20,11 @@ content-type: application/json
 
 {
   "user": {
-    "userName": "userReg2",
+    "userName": "userNew",
     "password": "123456",
-    "email": "correo@register2.com",
+    "email": "correo@register5.com",
     "teamID": "36739ea4-eb5b-4688-bc7e-156bda75c0f6",
     "role": "Team Member",
-    "continent": "America",
-    "region": "Latam"
-  }
-}
-
-###
-
-POST https://goscrum-api.alkemy.org/auth/register
-content-type: application/json
-
-{
-  "user": {
-    "userName": "userReg3",
-    "password": "123456",
-    "email": "correo@register3.com",
-    "teamID": "36739ea4-eb5b-4688-bc7e-156bda75c0f6",
-    "role": "Team Member",
-    "continent": "America",
-    "region": "Latam"
-  }
-}
-
-###
-
-POST https://goscrum-api.alkemy.org/auth/register
-content-type: application/json
-
-{
-  "user": {
-    "userName": "userReg4",
-    "password": "123456",
-    "email": "correo@register4.com",
-    "teamID": "807a6b11-e3f9-4c72-a89a-321ec100e586",
-    "role": "Team Leader",
     "continent": "Europa",
     "region": "Otro"
   }

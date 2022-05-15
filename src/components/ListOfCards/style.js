@@ -6,6 +6,10 @@ export const StyledContainerList = styled.div`
   gap: 12px;
   padding: 8px 0;
 
+  > span {
+    text-align: center;
+  }
+
   @media screen and (min-width: 900px) {
     width: 100%;
     height: fit-content;

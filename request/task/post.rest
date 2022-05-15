@@ -10,3 +10,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvcnJlb
     "description": "Desc1"
   }
 }
+
+###
+
+POST https://goscrum-api.alkemy.org/task
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvcnJlb0ByZWdpc3RlcjUuY29tIiwicm9sZSI6IlRlYW0gTWVtYmVyIiwidXNlck5hbWUiOiJ1c2VyTmV3IiwidGVhbUlkIjoiMzY3MzllYTQtZWI1Yi00Njg4LWJjN2UtMTU2YmRhNzVjMGY2IiwidXNlcklkIjoiNjI4MDY4ZTY3OGY3ZTZiNDE2YjEyODA5IiwiaWF0IjoxNjUyNTgyNjY2LCJleHAiOjE2NTI2NjkwNjZ9.tH098ZQvc9jBaaApZ8qPuoniFeNRcX0xmDIEDVgKYIM
+
+{
+  "task": {
+    "title": "title5",
+    "status": "FINISHED",
+    "importance": "MEDIUM",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, officia facilis id sunt eius velit officiis unde error dolorem harum provident similique tenetur! Debitis ipsam sit quia omnis libero vero qui incidunt, asperiores provident quae, recusandae, cupiditate quos ipsum. Ipsam tempore voluptatibus dolore fuga minima illum voluptatum, distinctio iure non accusantium quia at! In veritatis ipsum laudantium facilis eos expedita!"
+  }
+}

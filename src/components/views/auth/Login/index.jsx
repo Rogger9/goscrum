@@ -46,6 +46,7 @@ const Login = () => {
       .then(({ status_code: statusCode, result }) => {
         if (statusCode !== 200) return swal()
         window.localStorage.setItem('token', result?.token)
+        window.localStorage.setItem('userName', result?.user.userName)
         navigate(HOME, { replace: true })
       })
       .catch(() => swal({ title: 'Hubo un error', text: 'Intente más tarde', icon: 'error' }))

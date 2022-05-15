@@ -11,24 +11,6 @@ POST https://goscrum-api.alkemy.org/auth/login
 content-type: application/json
 
 {
-  "userName": "userReg2",
-  "password": "123456"
-}
-
-###
-POST https://goscrum-api.alkemy.org/auth/login
-content-type: application/json
-
-{
-  "userName": "userReg3",
-  "password": "123456"
-}
-
-###
-POST https://goscrum-api.alkemy.org/auth/login
-content-type: application/json
-
-{
-  "userName": "userReg4",
+  "userName": "userNew",
   "password": "123456"
 }
