@@ -5,14 +5,21 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 6px;
+  gap: 4px;
   box-shadow: 0px 4px 4px var(--global-shadow);
 `
 
 export const StyledWrapperRight = styled.section`
   display: flex;
-  gap: 10px;
-  font-size: 14px;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  font-size: 12px;
+
+  > button {
+    font-size: 12px;
+  }
 
   @media screen and (min-width: 900px) {
     gap: 16px;

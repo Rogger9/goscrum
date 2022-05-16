@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { LOGIN } from 'routes'
+import { DONATE, LOGIN } from 'routes'
+import Button from 'components/Button'
 import { StyledHeader, StyledWrapperRight } from './style'
 import { StyledButtonClose } from 'styles/StyledApp'
 import logo from 'assets/GoScrum-logo.png'
@@ -20,6 +21,7 @@ const Header = () => {
     <StyledHeader>
       <img src={logo} alt='Logo' width='82' />
       <StyledWrapperRight>
+        <Button value='Donar' handleClick={() => navigate(DONATE, { replace: true })} />
         <span>Tareas creadas: {tasks?.length}</span>
         <span>{userName}</span>
         <StyledButtonClose onClick={handleLogout} header>X</StyledButtonClose>

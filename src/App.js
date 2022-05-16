@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { HOME, LOGIN, REGISTER, REGISTERED, TEAM_ID } from 'routes'
+import { DONATE, HOME, LOGIN, REGISTER, REGISTERED, TEAM_ID } from 'routes'
 import { AnimatePresence } from 'framer-motion'
 import RequireAuth from 'components/RequireAuth'
 import Tasks from 'components/views/Tasks'
@@ -8,6 +8,7 @@ import Login from 'components/views/auth/Login'
 import Register from 'components/views/auth/Register'
 import Loader from 'components/Loader'
 import Registered from 'components/views/Registered'
+import Donate from 'components/views/Donate'
 
 const Error404 = lazy(() => import('components/views/Erro404'))
 
@@ -25,6 +26,14 @@ export const App = () => {
           element={
             <RequireAuth>
               <Tasks />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path={DONATE}
+          element={
+            <RequireAuth>
+              <Donate />
             </RequireAuth>
           }
         />
