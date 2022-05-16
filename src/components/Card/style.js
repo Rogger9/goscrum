@@ -10,6 +10,8 @@ const bgColors = {
 
 const fgColors = {
   'IN PROGRESS': 'black',
+  FINISHED: 'white',
+  LOW: 'white',
   MEDIUM: 'black'
 }
 
@@ -45,11 +47,11 @@ export const StyledButtonCard = styled.button`
   outline: none;
   border-radius: 3px;
   font-weight: bold;
-  cursor: pointer;
+  cursor: ${({ pointer }) => pointer && 'pointer'};
   box-shadow: ${({ shadow }) => shadow && '0 4px 4px var(--global-shadow)'};
 
   &:hover {
-    background: ${({ color }) => fgColors[color] ? `${fgColors[color]}` : 'white'};
-    color: ${({ color }) => bgColors[color] ? `var(--global-${bgColors[color]})` : 'var(--global-orange)'}
+    background: ${({ color }) => fgColors[color] && `${fgColors[color]}`};
+    color: ${({ color }) => bgColors[color] && `var(--global-${bgColors[color]})`}
   }
 `

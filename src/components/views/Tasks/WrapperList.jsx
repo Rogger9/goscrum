@@ -1,43 +1,37 @@
 import { useEffect, useState } from 'react'
 import { ListOfCards } from 'components/ListOfCards'
 import { useResize } from 'hooks/useResize'
-import swal from 'utils/swal'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTasks } from 'store/actions/tasksActions'
 import debounce from 'lodash.debounce'
 import ShowSkeleton from './ShowSkeleton'
 import DescktopView from './DescktopView'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { StyledForm } from 'styles/StyledForm'
 import { StyledFormControl, StyledWrapperList } from './style'
-
-const { REACT_APP_API_ENDPOINT: API_ENDPOINT } = process.env
+import { StyledPage } from 'styles/StyledApp'
 
 export const WrapperList = () => {
   const [list, setList] = useState(null)
   const [renderList, setRenderList] = useState(null)
   const [tasksFromWho, setTasksFromWho] = useState('ALL')
   const [search, setSearch] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
   const { isPhone } = useResize()
 
-  useEffect(() => {
-    setIsLoading(true)
-    const token = window.localStorage.getItem('token')
-    const url = `${API_ENDPOINT}task${tasksFromWho === 'ME' ? '/me' : ''}`
+  const dispatch = useDispatch()
 
-    window.fetch(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token
-      }
-    })
-      .then(res => res.json())
-      .then(({ result }) => {
-        setList(result)
-        setRenderList(result)
-      })
-      .catch(() => swal({ title: 'Hubo un error', text: 'Intente más tarde', icon: 'error' }))
-      .finally(() => setIsLoading(false))
+  useEffect(() => {
+    dispatch(getTasks(tasksFromWho === 'ME' ? 'me' : ''))
   }, [tasksFromWho])
+
+  const { isLoading, tasks, error } = useSelector(state => state.tasksReducer)
+
+  useEffect(() => {
+    if (tasks?.length) {
+      setList(tasks)
+      setRenderList(tasks)
+    }
+  }, [tasks])
 
   useEffect(() => {
     search
@@ -54,6 +48,8 @@ export const WrapperList = () => {
     e => setSearch(e?.target?.value),
     1000
   )
+
+  if (error) return <StyledPage><h4>Error! No pudimos acceder a las tareas</h4></StyledPage>
 
   return (
     <StyledWrapperList>

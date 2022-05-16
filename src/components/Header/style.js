@@ -12,4 +12,10 @@ export const StyledHeader = styled.header`
 export const StyledWrapperRight = styled.section`
   display: flex;
   gap: 10px;
+  font-size: 14px;
+
+  @media screen and (min-width: 900px) {
+    gap: 16px;
+    font-size: 16px;
+  }
 `

@@ -1,13 +1,13 @@
+import { useDispatch } from 'react-redux'
+import { postTasks } from 'store/actions/tasksActions'
 import { useFormik } from 'formik'
 import Button from 'components/Button'
 import * as Yup from 'yup'
+import { ToastContainer, toast } from 'react-toastify'
+import swal from 'utils/swal'
 import { StyledFormTask } from './style'
 import { StyledErrorMessage } from 'styles/StyledForm'
-import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
-import swal from 'utils/swal'
-
-const { REACT_APP_API_ENDPOINT: API_ENDPOINT } = process.env
 
 const initialValues = {
   title: '',
@@ -31,24 +31,9 @@ const validationSchema = Yup.object().shape({
 })
 
 export const TaskForm = () => {
-  const onSubmit = () => {
-    const token = window.localStorage.getItem('token')
+  const dispatch = useDispatch()
 
-    window.fetch(`${API_ENDPOINT}task`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token
-      },
-      body: JSON.stringify({ task: values })
-    })
-      .then(res => res.json())
-      .then(() => {
-        resetForm()
-        toast('Tu tarea se creó correctamente')
-      })
-      .catch(() => swal({ title: 'Hubo un error', text: 'Intente más tarde', icon: 'error' }))
-  }
+  const onSubmit = () => dispatch(postTasks(values, resetForm, toast, swal))
 
   const { handleSubmit, handleChange, handleBlur, errors, touched, values, resetForm } = useFormik({ initialValues, validationSchema, onSubmit })
 
