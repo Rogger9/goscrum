@@ -167,7 +167,7 @@ const Register = () => {
               value={values.role}
               className={errors.role && touched.role ? 'error' : ''}
             >
-              <option value=''>Selectionar rol...</option>
+              <option value=''>Seleccionar rol...</option>
               {data?.Rol?.map(option => <option key={option} value={option}>{option}</option>)}
             </select>
             {errors.role && touched.role && <StyledErrorMessage>{errors.role}</StyledErrorMessage>}
@@ -182,7 +182,7 @@ const Register = () => {
               value={values.continent}
               className={errors.continent && touched.continent ? 'error' : ''}
             >
-              <option value=''>Selectionar continente...</option>
+              <option value=''>Seleccionar continente...</option>
               {data?.continente?.map(option => <option key={option} value={option}>{option}</option>)}
             </select>
             {errors.continent && touched.continent && <StyledErrorMessage>{errors.continent}</StyledErrorMessage>}
