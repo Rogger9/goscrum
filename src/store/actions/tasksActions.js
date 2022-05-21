@@ -1,7 +1,8 @@
 import { TASKS_FAILURE, TASKS_REQUEST, TASKS_SUCCESS } from 'store/types'
+import { toast } from 'react-toastify'
+import swal from 'utils/swal'
 
 const { REACT_APP_API_ENDPOINT: API_ENDPOINT } = process.env
-const token = window.localStorage.getItem('token')
 
 export const tasksRequest = () => ({
   type: TASKS_REQUEST
@@ -23,7 +24,7 @@ export const getTasks = (path = '') => dispatch => {
   window.fetch(`${API_ENDPOINT}task/${path}`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + window.localStorage.getItem('token')
     }
   })
     .then(res => res.json())
@@ -31,23 +32,20 @@ export const getTasks = (path = '') => dispatch => {
     .catch(err => dispatch(tasksFailure(err)))
 }
 
-export const postTasks = (data, resetForm, toast, swal) => dispatch => {
-  const successMsg = 'Tu tarea se creó correctamente'
-  const errorMsg = { title: 'Hubo un error', text: 'Intente más tarde', icon: 'error' }
-
+export const postTasks = (data, resetForm) => dispatch => {
   window.fetch(`${API_ENDPOINT}task`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + window.localStorage.getItem('token')
     },
     body: JSON.stringify({ task: data })
   })
     .then(res => res.json())
     .then(({ status_code: statusCode }) => {
-      if (statusCode !== 200) return swal(errorMsg)
+      if (statusCode !== 200) return swal('error')
       resetForm()
-      toast(successMsg)
+      toast.success('Tu tarea se creó correctamente')
       dispatch(getTasks())
     })
     .catch(err => dispatch(tasksFailure(err)))
@@ -58,7 +56,7 @@ export const deleteTask = id => dispatch => {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + window.localStorage.getItem('token')
     }
   })
     .then(res => res.json())
@@ -77,7 +75,7 @@ export const editTaskStatus = data => dispatch => {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + window.localStorage.getItem('token')
     },
     body: JSON.stringify({
       task: {
