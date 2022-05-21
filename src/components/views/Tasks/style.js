@@ -59,6 +59,8 @@ export const StyledWrapperList = styled.section`
     > ${StyledContainerList}, span {
       width: 100%;
     }
+
+    > span { text-align: center; }
   }
 
   @media screen and (min-width: 900px) {
@@ -85,9 +87,14 @@ export const StyledFormControl = styled(FormControl)`
 
     > * { margin: 0 }
 
-    > label span {
-      width: max-content;
-      font-size: 14px;
+    > label {
+      > span:nth-child(2) {
+        width: max-content;
+      }
+    }
+
+    .Mui-checked {
+      color: var(--global-orange);
     }
   }
 `

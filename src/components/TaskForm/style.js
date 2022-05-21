@@ -9,7 +9,6 @@ export const StyledFormTask = styled(StyledForm)`
   }
 
   textarea {
-    padding: 10px;
     height: 120px;
     max-height: 250px;
     resize: vertical;

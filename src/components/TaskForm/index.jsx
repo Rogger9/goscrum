@@ -2,12 +2,11 @@ import { useDispatch } from 'react-redux'
 import { postTasks } from 'store/actions/tasksActions'
 import { useFormik } from 'formik'
 import Button from 'components/Button'
-import * as Yup from 'yup'
-import { ToastContainer, toast } from 'react-toastify'
-import swal from 'utils/swal'
+import { ToastContainer } from 'react-toastify'
 import { StyledFormTask } from './style'
 import { StyledErrorMessage } from 'styles/StyledForm'
 import 'react-toastify/dist/ReactToastify.min.css'
+import { getValidationSchema } from 'utils/validations'
 
 const initialValues = {
   title: '',
@@ -16,26 +15,18 @@ const initialValues = {
   description: ''
 }
 
-const requiredMessage = '*Campo obligatorio'
-
-const validationSchema = Yup.object().shape({
-  title: Yup.string()
-    .min(6, 'La cantidad mínima de caracteres es 6')
-    .required(requiredMessage),
-  status: Yup.string()
-    .required(requiredMessage),
-  importance: Yup.string()
-    .required(requiredMessage),
-  description: Yup.string()
-    .required(requiredMessage)
-})
+const { validationSchema } = getValidationSchema(initialValues)
 
 export const TaskForm = () => {
   const dispatch = useDispatch()
 
-  const onSubmit = () => dispatch(postTasks(values, resetForm, toast, swal))
+  const onSubmit = () => dispatch(postTasks(values, resetForm))
 
-  const { handleSubmit, handleChange, handleBlur, errors, touched, values, resetForm } = useFormik({ initialValues, validationSchema, onSubmit })
+  const { handleSubmit, handleChange, handleBlur, errors, touched, values, resetForm } = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit
+  })
 
   return (
     <section>
