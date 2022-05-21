@@ -1,14 +1,21 @@
 import Swal from 'sweetalert2'
 
-const swal = ({
-  title = 'Credeciales inválidas',
-  text = 'Por favor, introduzca credenciales válidas',
-  icon = null
-} = {}) => (
+const message = {
+  default: {
+    title: 'Credeciales inválidas',
+    text: 'Por favor, introduzca credenciales válidas',
+    icon: null
+  },
+  error: {
+    title: 'Hubo un error',
+    text: 'Intente más tarde',
+    icon: 'error'
+  }
+}
+
+const swal = (type = 'default') => (
   Swal.fire({
-    title,
-    text,
-    icon,
+    ...message[type],
     confirmButtonText: 'Aceptar',
     confirmButtonColor: '#FF452B',
     width: '400px',
