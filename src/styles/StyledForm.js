@@ -6,22 +6,39 @@ export const StyledForm = styled.form`
 
   label {
     width: 100%;
-  }
 
-  input, select, textarea {
-    width: 100%;
-    background: white;
-    padding: 0 10px;
-    border-radius: var(--global-radius);
-    border: 1px solid var(--global-grey);
-    outline: none;
+    > input, select, textarea {
+      width: 100%;
+      background: white;
+      border-radius: var(--global-radius);
+      border: 1px solid var(--global-grey);
+      outline: none;
 
-    &:focus {
-      box-shadow: 0 0 4px var(--global-shadow);
+      &:focus {
+        box-shadow: 0 0 4px var(--global-shadow);
+      }
+    }
+
+    > input, select {
+      height: 37px;
+      padding: 0 10px;
+    }
+
+    > textarea {
+      padding: 10px;
+    }
+
+    > input:disabled, select:disabled {
+      background: var(--global-grey);
+      pointer-events: none;
+    }
+
+    .error {
+      border: 1px solid var(--global-orange);
     }
   }
 
-  input, select, button {
+  > button {
     height: 37px;
   }
 
@@ -29,11 +46,8 @@ export const StyledForm = styled.form`
     text-decoration: none;
     color: black;
   }
-
-  .error {
-    border: 1px solid var(--global-orange);
-  }
 `
+
 export const StyledErrorMessage = styled.span`
   color: var(--global-orange);
   padding: 0 10px;
