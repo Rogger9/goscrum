@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/goscrum/static/css/main.67424a63.css",
+    "main.js": "/goscrum/static/js/main.8cc30636.js",
+    "static/js/811.7aaaa8f0.chunk.js": "/goscrum/static/js/811.7aaaa8f0.chunk.js",
+    "index.html": "/goscrum/index.html",
+    "static/media/error404.svg": "/goscrum/static/media/error404.ec88f934373b9ec2dd83a465760810e7.svg",
+    "main.67424a63.css.map": "/goscrum/static/css/main.67424a63.css.map",
+    "main.8cc30636.js.map": "/goscrum/static/js/main.8cc30636.js.map",
+    "811.7aaaa8f0.chunk.js.map": "/goscrum/static/js/811.7aaaa8f0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.67424a63.css",
+    "static/js/main.8cc30636.js"
+  ]
+}
