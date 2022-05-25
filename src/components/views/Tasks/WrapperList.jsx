@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux'
 import { useTasks } from 'hooks/useTasks'
 import { useResize } from 'hooks/useResize'
 import { ListOfCards } from 'components/ListOfCards'
@@ -9,8 +8,7 @@ import { StyledWrapperList } from './style'
 import { StyledPage } from 'styles/StyledApp'
 
 export const WrapperList = () => {
-  const { isLoading, tasks, error } = useSelector(state => state.tasksReducer)
-  const { renderList, handleChangeImportance, handleSearch, handleChangeTasksFromWho } = useTasks(tasks)
+  const { renderList, handleChangeImportance, handleSearch, handleChangeTasksFromWho, tasks, error, isLoading } = useTasks()
   const { isPhone } = useResize()
 
   if (error) return <StyledPage><h4>Error! No pudimos acceder a las tareas</h4></StyledPage>

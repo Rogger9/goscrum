@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getTasks } from 'store/actions/tasksActions'
 import debounce from 'lodash.debounce'
 
-export const useTasks = tasks => {
-  // const [list, setList] = useState(null)
+export const useTasks = () => {
+  const { isLoading, tasks, error } = useSelector(state => state.tasksReducer)
   const [renderList, setRenderList] = useState(null)
   const [tasksFromWho, setTasksFromWho] = useState('ALL')
   const [search, setSearch] = useState('')
@@ -15,10 +15,7 @@ export const useTasks = tasks => {
   }, [tasksFromWho])
 
   useEffect(() => {
-    // if (tasks?.length) {
-    // setList(tasks)
     setRenderList(tasks)
-    // }
   }, [tasks])
 
   useEffect(() => {
@@ -39,5 +36,5 @@ export const useTasks = tasks => {
 
   const handleChangeTasksFromWho = e => setTasksFromWho(e.currentTarget.value)
 
-  return { renderList, handleChangeImportance, handleSearch, handleChangeTasksFromWho }
+  return { renderList, handleChangeImportance, handleSearch, handleChangeTasksFromWho, tasks, isLoading, error }
 }
