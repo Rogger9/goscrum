@@ -1,18 +1,23 @@
 import styled from 'styled-components'
 import { StyledButtonClose } from 'styles/StyledApp'
 
-const bgColors = {
-  'IN PROGRESS': 'yellow',
-  FINISHED: 'green',
-  LOW: 'blue',
-  MEDIUM: 'yellow'
-}
-
-const fgColors = {
-  'IN PROGRESS': 'black',
-  FINISHED: 'white',
-  LOW: 'white',
-  MEDIUM: 'black'
+const colors = {
+  'IN PROGRESS': {
+    bg: 'yellow',
+    fg: 'black'
+  },
+  FINISHED: {
+    bg: 'green',
+    fg: 'white'
+  },
+  LOW: {
+    bg: 'blue',
+    fg: 'white'
+  },
+  MEDIUM: {
+    bg: 'yellow',
+    fg: 'black'
+  }
 }
 
 export const StyledCard = styled.div`
@@ -39,11 +44,11 @@ export const StyledCard = styled.div`
   }
 `
 export const StyledButtonCard = styled.button`
-  background: ${({ color }) => bgColors[color] ? `var(--global-${bgColors[color]})` : 'var(--global-orange)'};
-  color: ${({ color }) => fgColors[color] ? `${fgColors[color]}` : 'white'};
+  background: ${({ color }) => colors[color] ? `var(--global-${colors[color].bg})` : 'var(--global-orange)'};
+  color: ${({ color }) => colors[color] ? `${colors[color].fg}` : 'white'};
   padding: 2px 3px;
   margin: 6px 0;
-  border: 1px solid ${({ color }) => bgColors[color] ? `var(--global-${bgColors[color]})` : 'var(--global-orange)'};
+  border: 1px solid ${({ color }) => colors[color] ? `var(--global-${colors[color].bg})` : 'var(--global-orange)'};
   outline: none;
   border-radius: 3px;
   font-weight: bold;
@@ -51,7 +56,7 @@ export const StyledButtonCard = styled.button`
   box-shadow: ${({ shadow }) => shadow && '0 4px 4px var(--global-shadow)'};
 
   &:hover {
-    background: ${({ color }) => fgColors[color] && `${fgColors[color]}`};
-    color: ${({ color }) => bgColors[color] && `var(--global-${bgColors[color]})`}
+    background: ${({ color }) => colors[color] && `${colors[color].fg}`};
+    color: ${({ color }) => colors[color] && `var(--global-${colors[color].bg})`}
   }
 `
