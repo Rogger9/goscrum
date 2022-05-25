@@ -1,6 +1,4 @@
-import { TASKS_FAILURE, TASKS_REQUEST, TASKS_SUCCESS } from 'store/types'
-import { toast } from 'react-toastify'
-import swal from 'utils/swal'
+import { TASKS_FAILURE, TASKS_REQUEST, TASKS_RESET, TASKS_SUCCESS } from 'store/types'
 
 const { REACT_APP_API_ENDPOINT: API_ENDPOINT } = process.env
 
@@ -18,6 +16,10 @@ export const tasksFailure = err => ({
   payload: err
 })
 
+export const tasksReset = () => ({
+  type: TASKS_RESET
+})
+
 export const getTasks = (path = '') => dispatch => {
   dispatch(tasksRequest())
 
@@ -32,7 +34,7 @@ export const getTasks = (path = '') => dispatch => {
     .catch(err => dispatch(tasksFailure(err)))
 }
 
-export const postTasks = (data, resetForm) => dispatch => {
+export const postTasks = data => dispatch => {
   window.fetch(`${API_ENDPOINT}task`, {
     method: 'POST',
     headers: {
@@ -42,10 +44,8 @@ export const postTasks = (data, resetForm) => dispatch => {
     body: JSON.stringify({ task: data })
   })
     .then(res => res.json())
-    .then(({ status_code: statusCode }) => {
-      if (statusCode !== 200) return swal('error')
-      resetForm()
-      toast.success('Tu tarea se creó correctamente')
+    .then(() => {
+      dispatch(tasksReset())
       dispatch(getTasks())
     })
     .catch(err => dispatch(tasksFailure(err)))

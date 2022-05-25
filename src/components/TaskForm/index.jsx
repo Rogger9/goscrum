@@ -1,12 +1,13 @@
-import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { postTasks } from 'store/actions/tasksActions'
+import { getValidationSchema } from 'utils/validations'
 import { useFormik } from 'formik'
 import Button from 'components/Button'
-import { ToastContainer } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import { StyledFormTask } from './style'
 import { StyledErrorMessage } from 'styles/StyledForm'
 import 'react-toastify/dist/ReactToastify.min.css'
-import { getValidationSchema } from 'utils/validations'
 
 const initialValues = {
   title: '',
@@ -18,15 +19,23 @@ const initialValues = {
 const { validationSchema } = getValidationSchema(initialValues)
 
 export const TaskForm = () => {
+  const { reset } = useSelector(state => state.tasksReducer)
   const dispatch = useDispatch()
 
-  const onSubmit = () => dispatch(postTasks(values, resetForm))
+  const onSubmit = () => dispatch(postTasks(values))
 
   const { handleSubmit, handleChange, handleBlur, errors, touched, values, resetForm } = useFormik({
     initialValues,
     validationSchema,
     onSubmit
   })
+
+  useEffect(() => {
+    if (reset) {
+      toast.success('La tarea se creo correctamente')
+      resetForm()
+    }
+  }, [reset])
 
   return (
     <section>
@@ -45,7 +54,7 @@ export const TaskForm = () => {
               value={values.title}
               className={errors.title && touched.title ? 'error' : ''}
             />
-            {errors.title && touched.title && <StyledErrorMessage>{errors.title}</StyledErrorMessage>}
+            {errors.title && touched.title && (<StyledErrorMessage>{errors.title}</StyledErrorMessage>)}
           </label>
           <label htmlFor='status'>
             <select
@@ -61,7 +70,7 @@ export const TaskForm = () => {
               <option value='IN PROGRESS'>En proceso</option>
               <option value='FINISHED'>Finalizada</option>
             </select>
-            {errors.status && touched.status && <StyledErrorMessage>{errors.status}</StyledErrorMessage>}
+            {errors.status && touched.status && (<StyledErrorMessage>{errors.status}</StyledErrorMessage>)}
           </label>
           <label htmlFor='importance'>
             <select
@@ -77,7 +86,7 @@ export const TaskForm = () => {
               <option value='MEDIUM'>Media</option>
               <option value='HIGH'>Alta</option>
             </select>
-            {errors.importance && touched.importance && <StyledErrorMessage>{errors.importance}</StyledErrorMessage>}
+            {errors.importance && touched.importance && (<StyledErrorMessage>{errors.importance}</StyledErrorMessage>)}
           </label>
         </div>
         <div>
@@ -91,7 +100,7 @@ export const TaskForm = () => {
               placeholder='Descripción'
               className={errors.description && touched.description ? 'error' : ''}
             />
-            {errors.description && touched.description && <StyledErrorMessage>{errors.description}</StyledErrorMessage>}
+            {errors.description && touched.description && (<StyledErrorMessage>{errors.description}</StyledErrorMessage>)}
           </label>
         </div>
         <Button value='Crear' type='submit' />

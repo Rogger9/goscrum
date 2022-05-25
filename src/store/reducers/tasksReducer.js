@@ -1,9 +1,10 @@
-import { TASKS_FAILURE, TASKS_REQUEST, TASKS_SUCCESS } from 'store/types'
+import { TASKS_FAILURE, TASKS_REQUEST, TASKS_RESET, TASKS_SUCCESS } from 'store/types'
 
 const initialState = {
   isLoading: false,
   tasks: [],
-  error: ''
+  error: '',
+  reset: false
 }
 
 export const tasksReducer = (state = initialState, action) => {
@@ -18,14 +19,22 @@ export const tasksReducer = (state = initialState, action) => {
       return {
         isLoading: false,
         tasks: action.payload,
-        action: ''
+        action: '',
+        reset: false
       }
 
     case TASKS_FAILURE:
       return {
         isLoading: false,
         tasks: [],
-        error: action.payload
+        error: action.payload,
+        reset: false
+      }
+
+    case TASKS_RESET:
+      return {
+        ...state,
+        reset: true
       }
 
     default:
